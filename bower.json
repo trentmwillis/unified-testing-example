@@ -1,0 +1,25 @@
+{
+  "name": "unified-testing-example",
+  "description": "An example of a \"unified testing stack\" for unit, integration, and end-to-end tests",
+  "main": "index.js",
+  "authors": [
+    "Trent Willis <trentmwillis@gmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "testing",
+    "unified",
+    "qunit"
+  ],
+  "homepage": "https://github.com/trentmwillis/unified-testing-example",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^2.0.0"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "name": "unified-testing-example",
+  "version": "1.0.0",
+  "description": "An example of a \"unified testing stack\" for unit, integration, and end-to-end tests",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "start": "node ./index.js",
+    "test": "testem"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trentmwillis/unified-testing-example.git"
+  },
+  "keywords": [
+    "testing",
+    "unified",
+    "qunit"
+  ],
+  "author": "Trent Willis <trentmwillis@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/trentmwillis/unified-testing-example/issues"
+  },
+  "homepage": "https://github.com/trentmwillis/unified-testing-example#readme",
+  "dependencies": {
+    "express": "^4.15.3"
+  }
+}

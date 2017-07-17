@@ -1,0 +1,26 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+
+<dom-module id="ute-app">
+  <template>
+    The Unified Testing Example application is <span class="status">[[status]]</span>!
+  </template>
+
+  <script>
+    class UTEApp extends Polymer.Element {
+      static get is() {
+        return 'ute-app';
+      }
+
+      static get properties() {
+        return {
+          status: {
+            type: String,
+            value: 'good'
+          }
+        };
+      }
+    }
+
+    customElements.define(UTEApp.is, UTEApp);
+  </script>
+</dom-module>
