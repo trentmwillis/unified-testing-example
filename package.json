@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/trentmwillis/unified-testing-example#readme",
   "dependencies": {
-    "express": "^4.15.3"
+    "express": "^4.15.3",
+    "qunitjs": "^2.4.0"
   }
 }

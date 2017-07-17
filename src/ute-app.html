@@ -2,7 +2,7 @@
 
 <dom-module id="ute-app">
   <template>
-    The Unified Testing Example application is <span class="status">[[status]]</span>!
+    The Unified Testing Example application is <span class="status">[[displayStatus]]</span>!
   </template>
 
   <script>
@@ -16,8 +16,25 @@
           status: {
             type: String,
             value: 'good'
+          },
+
+          displayStatus: {
+            type: String,
+            computed: 'computeDisplayStatus(status)'
           }
         };
+      }
+
+      static capitalize(str) {
+        return str.split(' ').map(UTEApp.capitalizeWord).join(' ');
+      }
+
+      static capitalizeWord(word) {
+        return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+      }
+
+      computeDisplayStatus(status) {
+        return UTEApp.capitalize(status);
       }
     }
 
