@@ -48,8 +48,6 @@ async function browserTest(url, test) {
 
   const result = JSON.parse(testResult.result.value);
 
-  console.log(result);
-
   devtools.close();
   chrome.kill();
 

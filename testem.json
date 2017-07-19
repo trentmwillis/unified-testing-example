@@ -1,0 +1,20 @@
+{
+  "framework": "qunit",
+  "test_page": [
+    "tests/integration/index.html",
+    "tests/unit/index.html"
+  ],
+  "launch_in_dev": [
+    "Chrome"
+  ],
+  "launch_in_ci": [
+    "Chrome",
+    "End-To-End"
+  ],
+  "launchers": {
+    "End-To-End": {
+      "command": "npm run test:end-to-end",
+      "protocol": "tap"
+    }
+  }
+}
