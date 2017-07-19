@@ -12,49 +12,26 @@
   <div id="qunit-fixture"></div>
 
   <script src="../../node_modules/qunitjs/qunit/qunit.js"></script>
+  <script src="../helpers/dom-assert.js"></script>
+  <script src="../helpers/dom-object.js"></script>
   <script>
 
     QUnit.module('Integration Tests for UTEApp', function(hooks) {
-
-      function DOMObject(properties) {
-        const proto = Object.assign({}, properties);
-
-        return function DOMObjectConstructor(assert, root=document) {
-          Object.keys(proto).forEach(key => {
-            Object.defineProperty(this, key, {
-              get() {
-                const element = root.querySelector(proto[key]);
-                assert.ok(element, `found element for "${key}" with selector "${proto[key]}"`);
-                return element;
-              }
-            })
-          });
-        };
-      }
 
       const Component = DOMObject({
         status: '.status',
         changeStatus: '.change-status'
       });
 
-      function DOMAssert(assert) {
-        this.click = function(element) {
-          const event = new CustomEvent('click', {
-            bubbles: true,
-            compose: true
-          });
-          element.dispatchEvent(event);
-        };
-      }
-
-
       hooks.beforeEach(function(assert) {
+
         const fixture = document.getElementById('qunit-fixture');
         this.element = document.createElement('ute-app');
         fixture.appendChild(this.element);
 
         this.component = new Component(assert, this.element.shadowRoot);
         this.dom = new DOMAssert(assert);
+
       });
 
       QUnit.test('displays a formatted status', function(assert) {
