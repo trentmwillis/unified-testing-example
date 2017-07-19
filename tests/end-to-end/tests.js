@@ -1,24 +1,32 @@
 require('../helpers/qunit-in-browser');
 
 QUnit.test.inBrowser('Application smoke test', 'http://localhost:8000', function(assert) {
-  function waitFor(selector) {
-    return new Promise(resolve => {
-      function pollDOM() {
-        const element = document.querySelector(selector);
 
-        if (element) {
-          resolve();
-        } else {
-          setTimeout(pollDOM, 16);
-        }
-      }
-
-      setTimeout(pollDOM, 16);
-    });
+  function wait(time) {
+    const start = Date.now();
+    while (Date.now() < start + time) {}
   }
 
-  return waitFor('ute-app').then(() => {
-    assert.ok(document.querySelector('ute-app'));
-    assert.equal(document.querySelector('ute-app').displayStatus, 'Good');
+  const App = DOMObject({
+    status: '.status',
+    changeStatus: '.change-status'
   });
+  const HomePage = DOMObject({
+    app: 'ute-app'
+  });
+
+  this.page = new HomePage(assert);
+  this.page.appComponent = new App(assert, this.page.app.shadowRoot);
+
+  assert.equal(this.page.app.displayStatus, 'Good');
+
+  wait(1000);
+
+  this.dom = new DOMAssert(assert);
+  this.dom.click(this.page.appComponent.changeStatus);
+
+  wait(1000);
+
+  assert.equal(this.page.app.displayStatus, 'Bad');
+
 });
