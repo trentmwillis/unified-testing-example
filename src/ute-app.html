@@ -2,7 +2,11 @@
 
 <dom-module id="ute-app">
   <template>
-    The Unified Testing Example application is <span class="status">[[displayStatus]]</span>!
+    <p class="statement">
+      The Unified Testing Example application is <span class="status">[[displayStatus]]</span>!
+    </p>
+
+    <button class="change-status" on-click=changeStatus>Change Status to "[[oppositeStatus]]"</button>
   </template>
 
   <script>
@@ -21,6 +25,11 @@
           displayStatus: {
             type: String,
             computed: 'computeDisplayStatus(status)'
+          },
+
+          oppositeStatus: {
+            type: String,
+            computed: 'computeOppositeStatus(displayStatus)'
           }
         };
       }
@@ -35,6 +44,14 @@
 
       computeDisplayStatus(status) {
         return UTEApp.capitalize(status);
+      }
+
+      computeOppositeStatus(displayStatus) {
+        return displayStatus === 'Good' ? 'Bad' : 'Good';
+      }
+
+      changeStatus() {
+        this.status = this.oppositeStatus;
       }
     }
 
