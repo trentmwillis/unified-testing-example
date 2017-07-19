@@ -26,6 +26,8 @@
   },
   "homepage": "https://github.com/trentmwillis/unified-testing-example#readme",
   "dependencies": {
+    "chrome-launcher": "^0.3.1",
+    "chrome-remote-interface": "^0.24.2",
     "express": "^4.15.3",
     "qunitjs": "^2.4.0"
   }
